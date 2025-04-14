@@ -42,10 +42,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::PowderCoatingApp.Properties.Resources.Logo2;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(140, 141);
+            this.pictureBox1.Size = new System.Drawing.Size(187, 174);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -56,10 +56,9 @@
             this.lblCompanyName.BackColor = System.Drawing.Color.Transparent;
             this.lblCompanyName.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompanyName.ForeColor = System.Drawing.Color.White;
-            this.lblCompanyName.Location = new System.Drawing.Point(165, 10);
-            this.lblCompanyName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCompanyName.Location = new System.Drawing.Point(232, 11);
             this.lblCompanyName.Name = "lblCompanyName";
-            this.lblCompanyName.Size = new System.Drawing.Size(535, 32);
+            this.lblCompanyName.Size = new System.Drawing.Size(659, 41);
             this.lblCompanyName.TabIndex = 6;
             this.lblCompanyName.Text = "Powder Coating Service PCS Povazhna Sereda";
             // 
@@ -68,10 +67,9 @@
             this.lblAppName.AutoSize = true;
             this.lblAppName.BackColor = System.Drawing.Color.Transparent;
             this.lblAppName.ForeColor = System.Drawing.Color.White;
-            this.lblAppName.Location = new System.Drawing.Point(190, 43);
-            this.lblAppName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAppName.Location = new System.Drawing.Point(272, 50);
             this.lblAppName.Name = "lblAppName";
-            this.lblAppName.Size = new System.Drawing.Size(143, 13);
+            this.lblAppName.Size = new System.Drawing.Size(179, 16);
             this.lblAppName.TabIndex = 7;
             this.lblAppName.Text = "Powder Coating Service App";
             // 
@@ -81,10 +79,9 @@
             this.lblDateTime.BackColor = System.Drawing.Color.Transparent;
             this.lblDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblDateTime.Location = new System.Drawing.Point(355, 462);
-            this.lblDateTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDateTime.Location = new System.Drawing.Point(473, 569);
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(105, 24);
+            this.lblDateTime.Size = new System.Drawing.Size(134, 29);
             this.lblDateTime.TabIndex = 8;
             this.lblDateTime.Text = "Date Time";
             this.lblDateTime.Click += new System.EventHandler(this.lblDateTime_Click);
@@ -103,10 +100,10 @@
             this.btnBackToHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackToHome.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnBackToHome.Location = new System.Drawing.Point(126, 426);
-            this.btnBackToHome.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBackToHome.Location = new System.Drawing.Point(168, 524);
+            this.btnBackToHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBackToHome.Name = "btnBackToHome";
-            this.btnBackToHome.Size = new System.Drawing.Size(191, 60);
+            this.btnBackToHome.Size = new System.Drawing.Size(255, 74);
             this.btnBackToHome.TabIndex = 9;
             this.btnBackToHome.Text = "Back";
             this.btnBackToHome.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -115,17 +112,18 @@
             // 
             // RegistrationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::PowderCoatingApp.Properties.Resources.BackGroundImage2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(736, 502);
+            this.ClientSize = new System.Drawing.Size(981, 618);
             this.Controls.Add(this.btnBackToHome);
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.lblAppName);
             this.Controls.Add(this.lblCompanyName);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

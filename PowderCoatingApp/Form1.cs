@@ -42,5 +42,10 @@ namespace PowderCoatingApp
             await Animator.FadeOut(this);
             await Animator.FadeIn(registrationForm);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
