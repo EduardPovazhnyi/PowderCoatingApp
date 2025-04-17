@@ -23,6 +23,7 @@ namespace PowderCoatingApp
             // Use the image from Resources
             this.BackgroundImage = Properties.Resources.BackGroundImage2;
             this.BackgroundImageLayout = ImageLayout.Stretch;
+            timerDateTime.Start();
 
         }
 
@@ -38,12 +39,17 @@ namespace PowderCoatingApp
 
         private async void btnRegister_Click(object sender, EventArgs e)
         {
-            RegistrationForm registrationForm = new RegistrationForm();
-            await Animator.FadeOut(this);
-            await Animator.FadeIn(registrationForm);
+            ChooseRoleForm chooseRoleForm = new ChooseRoleForm();
+            chooseRoleForm.Show();
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
         {
 
         }

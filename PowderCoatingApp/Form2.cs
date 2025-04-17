@@ -142,5 +142,10 @@ namespace PowderCoatingApp
                 }
             }
         }
+
+        private void lblCompanyName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

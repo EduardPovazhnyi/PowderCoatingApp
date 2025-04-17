@@ -77,6 +77,7 @@
             this.lblCompanyName.Size = new System.Drawing.Size(659, 41);
             this.lblCompanyName.TabIndex = 6;
             this.lblCompanyName.Text = "Powder Coating Service PCS Povazhna Sereda";
+            this.lblCompanyName.Click += new System.EventHandler(this.lblCompanyName_Click);
             // 
             // lblAppName
             // 
@@ -95,7 +96,7 @@
             this.lblDateTime.BackColor = System.Drawing.Color.Transparent;
             this.lblDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblDateTime.Location = new System.Drawing.Point(473, 569);
+            this.lblDateTime.Location = new System.Drawing.Point(505, 558);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(134, 29);
             this.lblDateTime.TabIndex = 8;
