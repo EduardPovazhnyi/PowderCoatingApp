@@ -37,6 +37,13 @@
             this.btnBackToHome = new System.Windows.Forms.Button();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
+            this.lblChiefLogin = new System.Windows.Forms.Label();
+            this.txtChiefName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblChiefName = new System.Windows.Forms.Label();
+            this.lblChiefPassword = new System.Windows.Forms.Label();
+            this.txtChiefPassword = new System.Windows.Forms.TextBox();
+            this.btnConfirmChiefLogin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,10 +150,104 @@
             this.lblDateTime.Size = new System.Drawing.Size(134, 29);
             this.lblDateTime.TabIndex = 12;
             this.lblDateTime.Text = "Date Time";
+            this.lblDateTime.Click += new System.EventHandler(this.lblDateTime_Click);
             // 
             // timerDateTime
             // 
             this.timerDateTime.Interval = 1000;
+            this.timerDateTime.Tick += new System.EventHandler(this.timerDateTime_Tick);
+            // 
+            // lblChiefLogin
+            // 
+            this.lblChiefLogin.AutoSize = true;
+            this.lblChiefLogin.BackColor = System.Drawing.Color.Transparent;
+            this.lblChiefLogin.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChiefLogin.ForeColor = System.Drawing.Color.White;
+            this.lblChiefLogin.Location = new System.Drawing.Point(505, 130);
+            this.lblChiefLogin.Name = "lblChiefLogin";
+            this.lblChiefLogin.Size = new System.Drawing.Size(291, 38);
+            this.lblChiefLogin.TabIndex = 13;
+            this.lblChiefLogin.Text = "Chief Manager Login";
+            this.lblChiefLogin.Visible = false;
+            this.lblChiefLogin.Click += new System.EventHandler(this.lblChiefLogin_Click);
+            // 
+            // txtChiefName
+            // 
+            this.txtChiefName.BackColor = System.Drawing.Color.White;
+            this.txtChiefName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChiefName.Location = new System.Drawing.Point(510, 214);
+            this.txtChiefName.Name = "txtChiefName";
+            this.txtChiefName.Size = new System.Drawing.Size(316, 34);
+            this.txtChiefName.TabIndex = 14;
+            this.txtChiefName.Visible = false;
+            this.txtChiefName.TextChanged += new System.EventHandler(this.txtChiefName_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 16);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "label1";
+            // 
+            // lblChiefName
+            // 
+            this.lblChiefName.AutoSize = true;
+            this.lblChiefName.BackColor = System.Drawing.Color.Transparent;
+            this.lblChiefName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChiefName.ForeColor = System.Drawing.Color.White;
+            this.lblChiefName.Location = new System.Drawing.Point(507, 183);
+            this.lblChiefName.Name = "lblChiefName";
+            this.lblChiefName.Size = new System.Drawing.Size(68, 28);
+            this.lblChiefName.TabIndex = 16;
+            this.lblChiefName.Text = "Name";
+            this.lblChiefName.Visible = false;
+            this.lblChiefName.Click += new System.EventHandler(this.lblChiefPassword_Click);
+            // 
+            // lblChiefPassword
+            // 
+            this.lblChiefPassword.AutoSize = true;
+            this.lblChiefPassword.BackColor = System.Drawing.Color.Transparent;
+            this.lblChiefPassword.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChiefPassword.ForeColor = System.Drawing.Color.White;
+            this.lblChiefPassword.Location = new System.Drawing.Point(506, 267);
+            this.lblChiefPassword.Name = "lblChiefPassword";
+            this.lblChiefPassword.Size = new System.Drawing.Size(114, 31);
+            this.lblChiefPassword.TabIndex = 17;
+            this.lblChiefPassword.Text = "Password";
+            this.lblChiefPassword.Visible = false;
+            // 
+            // txtChiefPassword
+            // 
+            this.txtChiefPassword.BackColor = System.Drawing.Color.White;
+            this.txtChiefPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChiefPassword.Location = new System.Drawing.Point(510, 301);
+            this.txtChiefPassword.Name = "txtChiefPassword";
+            this.txtChiefPassword.Size = new System.Drawing.Size(316, 34);
+            this.txtChiefPassword.TabIndex = 18;
+            this.txtChiefPassword.UseSystemPasswordChar = true;
+            this.txtChiefPassword.Visible = false;
+            // 
+            // btnConfirmChiefLogin
+            // 
+            this.btnConfirmChiefLogin.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+            this.btnConfirmChiefLogin.FlatAppearance.BorderSize = 5;
+            this.btnConfirmChiefLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.btnConfirmChiefLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnConfirmChiefLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmChiefLogin.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmChiefLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnConfirmChiefLogin.Location = new System.Drawing.Point(510, 390);
+            this.btnConfirmChiefLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnConfirmChiefLogin.Name = "btnConfirmChiefLogin";
+            this.btnConfirmChiefLogin.Size = new System.Drawing.Size(314, 74);
+            this.btnConfirmChiefLogin.TabIndex = 26;
+            this.btnConfirmChiefLogin.Text = "Login";
+            this.btnConfirmChiefLogin.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnConfirmChiefLogin.UseVisualStyleBackColor = true;
+            this.btnConfirmChiefLogin.Visible = false;
+            this.btnConfirmChiefLogin.Click += new System.EventHandler(this.btnConfirmChiefLogin_Click);
             // 
             // ChooseRoleForm
             // 
@@ -156,6 +257,13 @@
             this.BackgroundImage = global::PowderCoatingApp.Properties.Resources.BackGroundImage2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(981, 618);
+            this.Controls.Add(this.btnConfirmChiefLogin);
+            this.Controls.Add(this.txtChiefPassword);
+            this.Controls.Add(this.lblChiefPassword);
+            this.Controls.Add(this.lblChiefName);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtChiefName);
+            this.Controls.Add(this.lblChiefLogin);
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.btnBackToHome);
             this.Controls.Add(this.btnRegisterManager);
@@ -182,5 +290,12 @@
         private System.Windows.Forms.Button btnBackToHome;
         private System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.Timer timerDateTime;
+        private System.Windows.Forms.Label lblChiefLogin;
+        private System.Windows.Forms.TextBox txtChiefName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblChiefName;
+        private System.Windows.Forms.Label lblChiefPassword;
+        private System.Windows.Forms.TextBox txtChiefPassword;
+        private System.Windows.Forms.Button btnConfirmChiefLogin;
     }
 }
