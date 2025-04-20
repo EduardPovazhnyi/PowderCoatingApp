@@ -47,7 +47,7 @@ namespace PowderCoatingApp
             await Animator.FadeIn(chooseRoleForm);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAbout_Click(object sender, EventArgs e)
         {
 
         }

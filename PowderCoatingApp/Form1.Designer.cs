@@ -36,7 +36,7 @@
             this.btnRegister = new System.Windows.Forms.Button();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
-            this.btnabout = new System.Windows.Forms.Button();
+            this.btnAbout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,24 +131,24 @@
             this.timerDateTime.Interval = 1000;
             this.timerDateTime.Tick += new System.EventHandler(this.timerDateTime_Tick);
             // 
-            // btnabout
+            // btnAbout
             // 
-            this.btnabout.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-            this.btnabout.FlatAppearance.BorderSize = 5;
-            this.btnabout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.btnabout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnabout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnabout.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnabout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnabout.Location = new System.Drawing.Point(171, 352);
-            this.btnabout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnabout.Name = "btnabout";
-            this.btnabout.Size = new System.Drawing.Size(255, 74);
-            this.btnabout.TabIndex = 8;
-            this.btnabout.Text = "About Us";
-            this.btnabout.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnabout.UseVisualStyleBackColor = true;
-            this.btnabout.Click += new System.EventHandler(this.button1_Click);
+            this.btnAbout.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+            this.btnAbout.FlatAppearance.BorderSize = 5;
+            this.btnAbout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.btnAbout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbout.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnAbout.Location = new System.Drawing.Point(171, 352);
+            this.btnAbout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(255, 74);
+            this.btnAbout.TabIndex = 8;
+            this.btnAbout.Text = "About Us";
+            this.btnAbout.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // HomeForm
             // 
@@ -158,7 +158,7 @@
             this.BackgroundImage = global::PowderCoatingApp.Properties.Resources.BackGroundImage2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(981, 618);
-            this.Controls.Add(this.btnabout);
+            this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
@@ -187,7 +187,7 @@
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.Timer timerDateTime;
-        private System.Windows.Forms.Button btnabout;
+        private System.Windows.Forms.Button btnAbout;
     }
 }
 
