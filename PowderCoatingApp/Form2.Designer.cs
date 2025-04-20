@@ -51,7 +51,11 @@
             this.lblPaymentInfo = new System.Windows.Forms.Label();
             this.cmbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.btnRegister = new System.Windows.Forms.Button();
+            this.picAvatar = new System.Windows.Forms.PictureBox();
+            this.btnUploadAvatar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -65,6 +69,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lblCompanyName
             // 
@@ -96,7 +101,6 @@
             this.lblDateTime.BackColor = System.Drawing.Color.Transparent;
             this.lblDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblDateTime.Location = new System.Drawing.Point(473, 569);
             this.lblDateTime.Location = new System.Drawing.Point(505, 558);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(134, 29);
@@ -259,7 +263,7 @@
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Location = new System.Drawing.Point(583, 138);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(308, 34);
+            this.txtAddress.Size = new System.Drawing.Size(346, 34);
             this.txtAddress.TabIndex = 22;
             // 
             // lblPaymentInfo
@@ -282,7 +286,7 @@
             this.cmbPaymentMethod.FormattingEnabled = true;
             this.cmbPaymentMethod.Location = new System.Drawing.Point(583, 204);
             this.cmbPaymentMethod.Name = "cmbPaymentMethod";
-            this.cmbPaymentMethod.Size = new System.Drawing.Size(308, 36);
+            this.cmbPaymentMethod.Size = new System.Drawing.Size(346, 36);
             this.cmbPaymentMethod.TabIndex = 24;
             this.cmbPaymentMethod.SelectedIndexChanged += new System.EventHandler(this.cmbPaymentMethod_SelectedIndexChanged);
             // 
@@ -295,7 +299,7 @@
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnRegister.Location = new System.Drawing.Point(583, 370);
+            this.btnRegister.Location = new System.Drawing.Point(442, 465);
             this.btnRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(308, 74);
@@ -305,6 +309,46 @@
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
+            // picAvatar
+            // 
+            this.picAvatar.Location = new System.Drawing.Point(583, 274);
+            this.picAvatar.Name = "picAvatar";
+            this.picAvatar.Size = new System.Drawing.Size(170, 170);
+            this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAvatar.TabIndex = 26;
+            this.picAvatar.TabStop = false;
+            this.picAvatar.Click += new System.EventHandler(this.picAvatar_Click);
+            // 
+            // btnUploadAvatar
+            // 
+            this.btnUploadAvatar.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+            this.btnUploadAvatar.FlatAppearance.BorderSize = 5;
+            this.btnUploadAvatar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.btnUploadAvatar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnUploadAvatar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUploadAvatar.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadAvatar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnUploadAvatar.Location = new System.Drawing.Point(759, 274);
+            this.btnUploadAvatar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUploadAvatar.Name = "btnUploadAvatar";
+            this.btnUploadAvatar.Size = new System.Drawing.Size(170, 170);
+            this.btnUploadAvatar.TabIndex = 27;
+            this.btnUploadAvatar.Text = "Upload Avatar";
+            this.btnUploadAvatar.UseVisualStyleBackColor = true;
+            this.btnUploadAvatar.Click += new System.EventHandler(this.btnUploadAvatar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(578, 244);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(235, 28);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Profile Picture (optional)";
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -313,6 +357,9 @@
             this.BackgroundImage = global::PowderCoatingApp.Properties.Resources.BackGroundImage2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(981, 618);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnUploadAvatar);
+            this.Controls.Add(this.picAvatar);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.cmbPaymentMethod);
             this.Controls.Add(this.lblPaymentInfo);
@@ -341,9 +388,9 @@
             this.Text = "Registration Form Powder Coating Service PCS Povazhna Sereda";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
 
         }
 
@@ -373,5 +420,6 @@
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.PictureBox picAvatar;
         private System.Windows.Forms.Button btnUploadAvatar;
+        private System.Windows.Forms.Label label1;
     }
 }

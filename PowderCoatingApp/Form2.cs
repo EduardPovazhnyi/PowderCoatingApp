@@ -10,11 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace PowderCoatingApp
 {
     public partial class RegistrationForm : Form
     {
+        private byte[] avatarImageBytes = null;
+
         public RegistrationForm()
         {
             InitializeComponent();
@@ -111,12 +114,18 @@ namespace PowderCoatingApp
 
                     // 5. Insert into Users table
                     string queryUser = @"INSERT INTO Users (name, email, password, phoneNumber, role) 
-                                 VALUES (@name, @email, @passwordHash, @phone, 'Customer')";
+                                 VALUES (@name, @email, @passwordHash, @phone, 'Customer', @avatar)";
                     MySqlCommand cmdUser = new MySqlCommand(queryUser, conn);
                     cmdUser.Parameters.AddWithValue("@name", txtName.Text);
                     cmdUser.Parameters.AddWithValue("@email", txtEmail.Text);
                     cmdUser.Parameters.AddWithValue("@passwordHash", hashedPassword);
                     cmdUser.Parameters.AddWithValue("@phone", txtPhone.Text);
+                    // Avatar upload
+                    if (avatarImageBytes != null)
+                        cmdUser.Parameters.AddWithValue("@avatar", avatarImageBytes);
+                    else
+                        cmdUser.Parameters.AddWithValue("@avatar", DBNull.Value);
+
                     cmdUser.ExecuteNonQuery();
 
                     int userId = (int)cmdUser.LastInsertedId;
@@ -150,7 +159,32 @@ namespace PowderCoatingApp
 
         private void btnUploadAvatar_Click(object sender, EventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Select Avatar";
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
 
-        }        
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Image avatar = Image.FromFile(openFileDialog.FileName);
+                picAvatar.Image = avatar;
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    avatar.Save(ms, avatar.RawFormat);
+                    avatarImageBytes = ms.ToArray(); // 🧠 Save avatar as byte array
+                }
+            }
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picAvatar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

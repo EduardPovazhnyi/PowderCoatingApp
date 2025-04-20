@@ -39,9 +39,12 @@ namespace PowderCoatingApp
 
         private async void btnRegister_Click(object sender, EventArgs e)
         {
+            //ChooseRoleForm chooseRoleForm = new ChooseRoleForm();
+            //chooseRoleForm.Show();
+            //this.Hide();
             ChooseRoleForm chooseRoleForm = new ChooseRoleForm();
-            chooseRoleForm.Show();
-            this.Hide();
+            await Animator.FadeOut(this);
+            await Animator.FadeIn(chooseRoleForm);
         }
 
         private void button1_Click(object sender, EventArgs e)
