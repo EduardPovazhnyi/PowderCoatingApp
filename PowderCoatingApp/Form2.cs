@@ -52,9 +52,9 @@ namespace PowderCoatingApp
 
         private async void btnBackToHome_Click(object sender, EventArgs e)
         {
-            HomeForm homeForm = new HomeForm();
+            ChooseRoleForm chooseRoleForm = new ChooseRoleForm();
             await Animator.FadeOut(this);
-            await Animator.FadeIn(homeForm);
+            await Animator.FadeIn(chooseRoleForm);
         }
 
 

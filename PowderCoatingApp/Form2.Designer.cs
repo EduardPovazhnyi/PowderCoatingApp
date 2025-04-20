@@ -326,7 +326,7 @@
             this.btnUploadAvatar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
             this.btnUploadAvatar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnUploadAvatar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUploadAvatar.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadAvatar.Font = new System.Drawing.Font("Segoe UI", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUploadAvatar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnUploadAvatar.Location = new System.Drawing.Point(759, 274);
             this.btnUploadAvatar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

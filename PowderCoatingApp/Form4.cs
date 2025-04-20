@@ -118,8 +118,8 @@ namespace PowderCoatingApp
 
         private void btnRemoveAdmin_Click(object sender, EventArgs e)
         {
-            RemoveAdminForm removeAdmin = new RemoveAdminForm(); // will create this too
-            removeAdmin.ShowDialog();
+            //RemoveAdminForm removeAdmin = new RemoveAdminForm(); // will create this too
+            //removeAdmin.ShowDialog();
         }
 
         private void btnViewAdmins_Click(object sender, EventArgs e)
@@ -144,9 +144,9 @@ namespace PowderCoatingApp
 
         private void btnServiceDashboard_Click(object sender, EventArgs e)
         {
-            ServiceManagerDashboard dashboard = new ServiceManagerDashboard(); // I’ll create this later
-            dashboard.Show();
-            this.Hide();
+            //ServiceManagerDashboard dashboard = new ServiceManagerDashboard(); // I’ll create this later
+            //dashboard.Show();
+            //this.Hide();
         }
 
         private async void btnBackToHome_Click(object sender, EventArgs e)

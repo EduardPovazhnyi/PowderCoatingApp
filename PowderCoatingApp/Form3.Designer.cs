@@ -32,18 +32,17 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblCompanyName = new System.Windows.Forms.Label();
             this.lblAppName = new System.Windows.Forms.Label();
-            this.btnRegisterManager = new System.Windows.Forms.Button();
-            this.btnRegisterCustomer = new System.Windows.Forms.Button();
             this.btnBackToHome = new System.Windows.Forms.Button();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.lblChiefLogin = new System.Windows.Forms.Label();
             this.txtChiefName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblChiefName = new System.Windows.Forms.Label();
             this.lblChiefPassword = new System.Windows.Forms.Label();
             this.txtChiefPassword = new System.Windows.Forms.TextBox();
             this.btnConfirmChiefLogin = new System.Windows.Forms.Button();
+            this.btnRegisterManager = new System.Windows.Forms.Button();
+            this.btnRegisterCustomer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,44 +80,6 @@
             this.lblAppName.Size = new System.Drawing.Size(179, 16);
             this.lblAppName.TabIndex = 8;
             this.lblAppName.Text = "Powder Coating Service App";
-            // 
-            // btnRegisterManager
-            // 
-            this.btnRegisterManager.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-            this.btnRegisterManager.FlatAppearance.BorderSize = 5;
-            this.btnRegisterManager.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.btnRegisterManager.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnRegisterManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterManager.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegisterManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnRegisterManager.Location = new System.Drawing.Point(171, 432);
-            this.btnRegisterManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnRegisterManager.Name = "btnRegisterManager";
-            this.btnRegisterManager.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnRegisterManager.Size = new System.Drawing.Size(255, 74);
-            this.btnRegisterManager.TabIndex = 10;
-            this.btnRegisterManager.Text = "I’m a Manager";
-            this.btnRegisterManager.UseVisualStyleBackColor = true;
-            this.btnRegisterManager.Click += new System.EventHandler(this.btnRegisterManager_Click);
-            // 
-            // btnRegisterCustomer
-            // 
-            this.btnRegisterCustomer.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-            this.btnRegisterCustomer.FlatAppearance.BorderSize = 5;
-            this.btnRegisterCustomer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.btnRegisterCustomer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnRegisterCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterCustomer.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegisterCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnRegisterCustomer.Location = new System.Drawing.Point(171, 352);
-            this.btnRegisterCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnRegisterCustomer.Name = "btnRegisterCustomer";
-            this.btnRegisterCustomer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnRegisterCustomer.Size = new System.Drawing.Size(255, 74);
-            this.btnRegisterCustomer.TabIndex = 9;
-            this.btnRegisterCustomer.Text = "I’m a Customer";
-            this.btnRegisterCustomer.UseVisualStyleBackColor = true;
-            this.btnRegisterCustomer.Click += new System.EventHandler(this.btnRegisterCustomer_Click);
             // 
             // btnBackToHome
             // 
@@ -182,15 +143,6 @@
             this.txtChiefName.Visible = false;
             this.txtChiefName.TextChanged += new System.EventHandler(this.txtChiefName_TextChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "label1";
-            // 
             // lblChiefName
             // 
             this.lblChiefName.AutoSize = true;
@@ -249,6 +201,44 @@
             this.btnConfirmChiefLogin.Visible = false;
             this.btnConfirmChiefLogin.Click += new System.EventHandler(this.btnConfirmChiefLogin_Click);
             // 
+            // btnRegisterManager
+            // 
+            this.btnRegisterManager.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+            this.btnRegisterManager.FlatAppearance.BorderSize = 5;
+            this.btnRegisterManager.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.btnRegisterManager.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRegisterManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegisterManager.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegisterManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRegisterManager.Location = new System.Drawing.Point(171, 390);
+            this.btnRegisterManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRegisterManager.Name = "btnRegisterManager";
+            this.btnRegisterManager.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnRegisterManager.Size = new System.Drawing.Size(280, 74);
+            this.btnRegisterManager.TabIndex = 10;
+            this.btnRegisterManager.Text = "I’m a Manager";
+            this.btnRegisterManager.UseVisualStyleBackColor = true;
+            this.btnRegisterManager.Click += new System.EventHandler(this.btnRegisterManager_Click);
+            // 
+            // btnRegisterCustomer
+            // 
+            this.btnRegisterCustomer.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+            this.btnRegisterCustomer.FlatAppearance.BorderSize = 5;
+            this.btnRegisterCustomer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.btnRegisterCustomer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnRegisterCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegisterCustomer.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegisterCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRegisterCustomer.Location = new System.Drawing.Point(171, 301);
+            this.btnRegisterCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRegisterCustomer.Name = "btnRegisterCustomer";
+            this.btnRegisterCustomer.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnRegisterCustomer.Size = new System.Drawing.Size(280, 74);
+            this.btnRegisterCustomer.TabIndex = 9;
+            this.btnRegisterCustomer.Text = "I’m a Customer";
+            this.btnRegisterCustomer.UseVisualStyleBackColor = true;
+            this.btnRegisterCustomer.Click += new System.EventHandler(this.btnRegisterCustomer_Click);
+            // 
             // ChooseRoleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -261,7 +251,6 @@
             this.Controls.Add(this.txtChiefPassword);
             this.Controls.Add(this.lblChiefPassword);
             this.Controls.Add(this.lblChiefName);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtChiefName);
             this.Controls.Add(this.lblChiefLogin);
             this.Controls.Add(this.lblDateTime);
@@ -272,6 +261,7 @@
             this.Controls.Add(this.lblCompanyName);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ChooseRoleForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Choose Role Form Powder Coating Service PCS Povazhna Sereda";
             this.Load += new System.EventHandler(this.ChooseRoleForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -285,17 +275,16 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.Label lblAppName;
-        private System.Windows.Forms.Button btnRegisterManager;
-        private System.Windows.Forms.Button btnRegisterCustomer;
         private System.Windows.Forms.Button btnBackToHome;
         private System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.Timer timerDateTime;
         private System.Windows.Forms.Label lblChiefLogin;
         private System.Windows.Forms.TextBox txtChiefName;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblChiefName;
         private System.Windows.Forms.Label lblChiefPassword;
         private System.Windows.Forms.TextBox txtChiefPassword;
         private System.Windows.Forms.Button btnConfirmChiefLogin;
+        private System.Windows.Forms.Button btnRegisterManager;
+        private System.Windows.Forms.Button btnRegisterCustomer;
     }
 }
