@@ -56,6 +56,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lblCompanyName
             // 
@@ -91,6 +92,7 @@
             this.lblDateTime.Size = new System.Drawing.Size(134, 29);
             this.lblDateTime.TabIndex = 13;
             this.lblDateTime.Text = "Date Time";
+            this.lblDateTime.Click += new System.EventHandler(this.lblDateTime_Click);
             // 
             // timerDateTime
             // 
@@ -209,7 +211,7 @@
             this.dgvAdmins.Location = new System.Drawing.Point(510, 243);
             this.dgvAdmins.Name = "dgvAdmins";
             this.dgvAdmins.RowHeadersWidth = 51;
-            this.dgvAdmins.RowTemplate.Height = 24;
+            this.dgvAdmins.RowTemplate.Height = 80;
             this.dgvAdmins.Size = new System.Drawing.Size(428, 295);
             this.dgvAdmins.TabIndex = 20;
             this.dgvAdmins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);

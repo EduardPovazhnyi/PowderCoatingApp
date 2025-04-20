@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace PowderCoatingApp
 {
@@ -46,16 +47,61 @@ namespace PowderCoatingApp
                 try
                 {
                     conn.Open();
-                    string query = "SELECT userID, name, email, phoneNumber FROM Users WHERE role = 'ServiceManager'";
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                    string query = "SELECT userID, name, email, phoneNumber, avatar FROM users WHERE role = 'ServiceManager'";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     DataTable table = new DataTable();
                     adapter.Fill(table);
-                    dgvAdmins.DataSource = table;
+
+                    dgvAdmins.Rows.Clear();
+                    dgvAdmins.Columns.Clear();
+
+                    // This line for dgvAdmins
+                    dgvAdmins.AutoGenerateColumns = false;
+                    dgvAdmins.RowTemplate.Height = 80;
+
+                    // Define columns
+                    dgvAdmins.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "ID", DataPropertyName = "userID" });
+                    dgvAdmins.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Name", DataPropertyName = "name" });
+                    dgvAdmins.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Email", DataPropertyName = "email" });
+                    dgvAdmins.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Phone", DataPropertyName = "phoneNumber" });
+
+                    // Avatar column
+                    var avatarColumn = new DataGridViewImageColumn
+                    {
+                        HeaderText = "Avatar",
+                        ImageLayout = DataGridViewImageCellLayout.Zoom,
+                        Width = 80
+                    };
+                    dgvAdmins.Columns.Add(avatarColumn);
+
+                    // Add rows
+                    foreach (DataRow row in table.Rows)
+                    {
+                        byte[] avatarData = row["avatar"] == DBNull.Value ? null : (byte[])row["avatar"];
+                        Image avatarImage = avatarData != null ? ByteArrayToImage(avatarData) : Properties.Resources.defaultAvatar;
+
+                        dgvAdmins.Rows.Add(
+                            row["userID"],
+                            row["name"],
+                            row["email"],
+                            row["phoneNumber"],
+                            avatarImage
+                        );
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error loading managers: " + ex.Message);
                 }
+            }
+        }
+
+        private Image ByteArrayToImage(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            {
+                return Image.FromStream(ms);
             }
         }
 
@@ -66,7 +112,7 @@ namespace PowderCoatingApp
 
         private void btnAddAdmin_Click(object sender, EventArgs e)
         {
-            AddAdminForm addAdmin = new AddAdminForm(); // create this next
+            AddAdminForm addAdmin = new AddAdminForm(); // create this next - done
             addAdmin.ShowDialog();
         }
 
@@ -109,6 +155,16 @@ namespace PowderCoatingApp
             await Animator.FadeOut(this);
             await Animator.FadeIn(chooseRole);
             
+        }
+
+        private void lblDateTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
