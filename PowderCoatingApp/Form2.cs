@@ -72,7 +72,7 @@ namespace PowderCoatingApp
 
         private void cmbPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -151,6 +151,6 @@ namespace PowderCoatingApp
         private void btnUploadAvatar_Click(object sender, EventArgs e)
         {
 
-        }
+        }        
     }
 }
