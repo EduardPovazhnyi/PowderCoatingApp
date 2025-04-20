@@ -152,10 +152,5 @@ namespace PowderCoatingApp
         {
 
         }
-
-        private void RegistrationForm_Load_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
