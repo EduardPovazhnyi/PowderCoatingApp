@@ -76,10 +76,8 @@ namespace PowderCoatingApp
             string chiefPassword = txtChiefPassword.Text;
             string hashedPassword = HashPassword(chiefPassword);
 
-            string connectionString = "server=localhost;port=3300;user=root;password=MySecurePass qwerty;database=PowderCoatingDB;";
-            //string connectionString = "server=localhost;user=root;password=MySecurePassqwerty;database=PowderCoatingDB;";
-            //string connectionString = "server=localhost;user=root;password='MySecurePass qwerty';database=PowderCoatingDB;";
-            //string connectionString = "server=localhost;user=root;password=your_password;database=PowderCoatingDB;";
+            string connectionString = "server=localhost;port=3300;user=root;password=qwerty;database=PowderCoatingDB;";
+            
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {

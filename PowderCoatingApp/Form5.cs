@@ -62,7 +62,7 @@ namespace PowderCoatingApp
         private void btnRegister_Click(object sender, EventArgs e)
         {
             string name = txtName.Text.Trim();
-            string email = txtEmail.Text.Trim();
+            string email = txtEmail.Text.Trim(); // That to normalize email
             string phone = txtPhone.Text.Trim();
             string password = txtPassword.Text.Trim();
             string confirmPassword = txtConfirmPassword.Text.Trim();
@@ -82,35 +82,63 @@ namespace PowderCoatingApp
             }
 
             string passwordHash = HashPassword(password);
-            string connectionString = "server=localhost;user=root;database=powdercoatingdb;port=3306;password=your_password;";
+            string connectionString = "server=localhost;port=3300;user=root;password=qwerty;database=PowderCoatingDB;";
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                conn.Open();
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
 
-                // 1. Insert into users table
-                string userQuery = @"INSERT INTO users (name, email, passwordHash, phoneNumber, role, avatar)
-                             VALUES (@name, @email, @password, @phone, 'ServiceManager', @avatar)";
-                MySqlCommand cmdUser = new MySqlCommand(userQuery, conn);
-                cmdUser.Parameters.AddWithValue("@name", name);
-                cmdUser.Parameters.AddWithValue("@email", email);
-                cmdUser.Parameters.AddWithValue("@password", passwordHash);
-                cmdUser.Parameters.AddWithValue("@phone", phone);
-                cmdUser.Parameters.AddWithValue("@avatar", avatarBytes);
-                cmdUser.ExecuteNonQuery();
+                    // Check if email already exists
+                    string checkEmailQuery = "SELECT COUNT(*) FROM users WHERE LOWER(email) = @checkEmail";
+                    MySqlCommand checkCmd = new MySqlCommand(checkEmailQuery, conn);
+                    checkCmd.Parameters.AddWithValue("@checkEmail", email);
+                    long count = (long)checkCmd.ExecuteScalar();
 
-                long userId = cmdUser.LastInsertedId;
+                    if (count > 0)
+                    {
+                        MessageBox.Show("An account with this email already exists.", "Duplicate Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
-                // 2. Insert into servicemanagers table
-                string managerQuery = "INSERT INTO servicemanagers (employeeNumber, userID) VALUES (@empNum, @userId)";
-                MySqlCommand cmdManager = new MySqlCommand(managerQuery, conn);
-                cmdManager.Parameters.AddWithValue("@empNum", Guid.NewGuid().ToString().Substring(0, 8));
-                cmdManager.Parameters.AddWithValue("@userId", userId);
-                cmdManager.ExecuteNonQuery();
+                    // Insert into users table
+                    string userQuery = @"INSERT INTO users (name, email, passwordHash, phoneNumber, role, avatar)
+                                 VALUES (@name, @email, @password, @phone, 'ServiceManager', @avatar)";
+                    MySqlCommand cmdUser = new MySqlCommand(userQuery, conn);
+                    cmdUser.Parameters.AddWithValue("@name", name);
+                    cmdUser.Parameters.AddWithValue("@email", email);
+                    cmdUser.Parameters.AddWithValue("@password", passwordHash);
+                    cmdUser.Parameters.AddWithValue("@phone", phone);
+                    cmdUser.Parameters.AddWithValue("@avatar", avatarBytes);
+                    cmdUser.ExecuteNonQuery();
+
+                    // Log the query for debugging
+                    MessageBox.Show($"Executing query: {cmdUser.CommandText}");
+
+                    cmdUser.ExecuteNonQuery();
+
+                    long userId = cmdUser.LastInsertedId;
+
+                    // Insert into servicemanagers table
+                    string managerQuery = "INSERT INTO servicemanagers (employeeNumber, userID) VALUES (@empNum, @userId)";
+                    MySqlCommand cmdManager = new MySqlCommand(managerQuery, conn);
+                    cmdManager.Parameters.AddWithValue("@empNum", Guid.NewGuid().ToString().Substring(0, 8));
+                    cmdManager.Parameters.AddWithValue("@userId", userId);
+                    cmdManager.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Service Manager registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
-
-            MessageBox.Show("Service Manager registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            catch (MySqlException ex)
+            {
+                MessageBox.Show($"Database error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private string HashPassword(string password)
         {
@@ -125,7 +153,7 @@ namespace PowderCoatingApp
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files (*.jpg; *.png)|*.jpg;*.png";
+            openFileDialog.Filter = "Image Files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -136,6 +164,11 @@ namespace PowderCoatingApp
         }
 
         private void pictureBoxAvatar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
         {
 
         }

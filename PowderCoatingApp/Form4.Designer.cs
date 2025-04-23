@@ -142,7 +142,7 @@
             this.btnAddAdmin.Location = new System.Drawing.Point(171, 189);
             this.btnAddAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddAdmin.Name = "btnAddAdmin";
-            this.btnAddAdmin.Size = new System.Drawing.Size(280, 74);
+            this.btnAddAdmin.Size = new System.Drawing.Size(306, 74);
             this.btnAddAdmin.TabIndex = 16;
             this.btnAddAdmin.Text = "Add Manager";
             this.btnAddAdmin.UseVisualStyleBackColor = true;
@@ -160,10 +160,9 @@
             this.btnRemoveAdmin.Location = new System.Drawing.Point(171, 267);
             this.btnRemoveAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveAdmin.Name = "btnRemoveAdmin";
-            this.btnRemoveAdmin.Size = new System.Drawing.Size(280, 74);
+            this.btnRemoveAdmin.Size = new System.Drawing.Size(306, 74);
             this.btnRemoveAdmin.TabIndex = 17;
             this.btnRemoveAdmin.Text = "Remove Manager";
-            this.btnRemoveAdmin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRemoveAdmin.UseVisualStyleBackColor = true;
             this.btnRemoveAdmin.Click += new System.EventHandler(this.btnRemoveAdmin_Click);
             // 
@@ -179,10 +178,9 @@
             this.btnViewAdmins.Location = new System.Drawing.Point(171, 345);
             this.btnViewAdmins.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewAdmins.Name = "btnViewAdmins";
-            this.btnViewAdmins.Size = new System.Drawing.Size(280, 74);
+            this.btnViewAdmins.Size = new System.Drawing.Size(306, 74);
             this.btnViewAdmins.TabIndex = 18;
             this.btnViewAdmins.Text = "View All Managers";
-            this.btnViewAdmins.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnViewAdmins.UseVisualStyleBackColor = true;
             this.btnViewAdmins.Click += new System.EventHandler(this.btnViewAdmins_Click);
             // 
@@ -198,7 +196,7 @@
             this.btnServiceDashboard.Location = new System.Drawing.Point(171, 423);
             this.btnServiceDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnServiceDashboard.Name = "btnServiceDashboard";
-            this.btnServiceDashboard.Size = new System.Drawing.Size(280, 88);
+            this.btnServiceDashboard.Size = new System.Drawing.Size(306, 88);
             this.btnServiceDashboard.TabIndex = 19;
             this.btnServiceDashboard.Text = "Service Manager \r\nDashboard";
             this.btnServiceDashboard.UseVisualStyleBackColor = true;
@@ -208,11 +206,11 @@
             // 
             this.dgvAdmins.BackgroundColor = System.Drawing.Color.White;
             this.dgvAdmins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAdmins.Location = new System.Drawing.Point(510, 243);
+            this.dgvAdmins.Location = new System.Drawing.Point(510, 189);
             this.dgvAdmins.Name = "dgvAdmins";
             this.dgvAdmins.RowHeadersWidth = 51;
             this.dgvAdmins.RowTemplate.Height = 80;
-            this.dgvAdmins.Size = new System.Drawing.Size(428, 295);
+            this.dgvAdmins.Size = new System.Drawing.Size(437, 322);
             this.dgvAdmins.TabIndex = 20;
             this.dgvAdmins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -236,6 +234,7 @@
             this.Controls.Add(this.lblCompanyName);
             this.Controls.Add(this.pictureBox1);
             this.Name = "AdminManagementForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Management Form Powder Coating Service PCS Povazhna Sereda";
             this.Load += new System.EventHandler(this.AdminManagementForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

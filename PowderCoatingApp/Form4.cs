@@ -16,7 +16,8 @@ namespace PowderCoatingApp
 {
     public partial class AdminManagementForm : Form
     {
-        string connectionString = "server=localhost;user=root;password=your_password;database=PowderCoatingDB;";
+        string connectionString = "server=localhost;port=3300;user=root;password=qwerty;database=PowderCoatingDB;";
+        
         public AdminManagementForm()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace PowderCoatingApp
 
         private void LoadManagers()
         {
-            string connectionString = "server=localhost;user=root;password=your_password;database=PowderCoatingDB;";
+            string connectionString = "server=localhost;port=3300;user=root;password=qwerty;database=PowderCoatingDB;";            
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -53,6 +54,8 @@ namespace PowderCoatingApp
                     DataTable table = new DataTable();
                     adapter.Fill(table);
 
+                    // Reset DataGridView
+                    dgvAdmins.DataSource = null;
                     dgvAdmins.Rows.Clear();
                     dgvAdmins.Columns.Clear();
 
@@ -110,10 +113,11 @@ namespace PowderCoatingApp
 
         }
 
-        private void btnAddAdmin_Click(object sender, EventArgs e)
+        private async void btnAddAdmin_Click(object sender, EventArgs e)
         {
-            AddAdminForm addAdmin = new AddAdminForm(); // create this next - done
-            addAdmin.ShowDialog();
+            AddAdminForm addAdmin = new AddAdminForm();// create this next - done
+            await Animator.FadeOut(this);
+            await Animator.FadeIn(addAdmin);
         }
 
         private void btnRemoveAdmin_Click(object sender, EventArgs e)
@@ -129,7 +133,7 @@ namespace PowderCoatingApp
                 try
                 {
                     conn.Open();
-                    string query = "SELECT userID, name, email, phoneNumber FROM Users WHERE role = 'ServiceManager'";
+                    string query = "SELECT userID, name, email, phoneNumber, avatar FROM Users WHERE role = 'ServiceManager'";
                     MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                     DataTable table = new DataTable();
                     adapter.Fill(table);
