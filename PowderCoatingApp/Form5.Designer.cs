@@ -119,6 +119,7 @@
             this.lblDateTime.Size = new System.Drawing.Size(134, 29);
             this.lblDateTime.TabIndex = 16;
             this.lblDateTime.Text = "Date Time";
+            this.lblDateTime.Click += new System.EventHandler(this.lblDateTime_Click);
             // 
             // timerDateTime
             // 
