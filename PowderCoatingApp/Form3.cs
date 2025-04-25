@@ -76,7 +76,8 @@ namespace PowderCoatingApp
             string chiefPassword = txtChiefPassword.Text;
             string hashedPassword = HashPassword(chiefPassword);
 
-            string connectionString = "server=localhost;port=3300;user=root;password=qwerty;database=PowderCoatingDB;";
+            string connectionString = "server=localhost;port=3306;user=root;password=;database=PowderCoatingDB;";
+            //string connectionString = "server=localhost;port=3306;user=root;password=qwerty;database=PowderCoatingDB;";
             
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -85,6 +86,7 @@ namespace PowderCoatingApp
                 {
                     conn.Open();
                     Console.WriteLine("Connection opened successfully."); // Cheking line
+                    //MessageBox.Show("Connected!"); // Cheking line temporarily
                     string query = "SELECT * FROM users WHERE name = @name AND passwordHash = @password AND role = 'ChiefAdmin'";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@name", chiefName);
@@ -106,7 +108,7 @@ namespace PowderCoatingApp
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Database error: " + ex.Message);
+                    MessageBox.Show("Database error: " + ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 

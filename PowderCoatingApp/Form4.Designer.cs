@@ -37,8 +37,6 @@
             this.btnBackToHome = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnAddAdmin = new System.Windows.Forms.Button();
-            this.btnRemoveAdmin = new System.Windows.Forms.Button();
-            this.btnViewAdmins = new System.Windows.Forms.Button();
             this.btnServiceDashboard = new System.Windows.Forms.Button();
             this.dgvAdmins = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -139,50 +137,14 @@
             this.btnAddAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddAdmin.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddAdmin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnAddAdmin.Location = new System.Drawing.Point(171, 189);
+            this.btnAddAdmin.Location = new System.Drawing.Point(12, 189);
             this.btnAddAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddAdmin.Name = "btnAddAdmin";
-            this.btnAddAdmin.Size = new System.Drawing.Size(306, 74);
+            this.btnAddAdmin.Size = new System.Drawing.Size(271, 74);
             this.btnAddAdmin.TabIndex = 16;
             this.btnAddAdmin.Text = "Add Manager";
             this.btnAddAdmin.UseVisualStyleBackColor = true;
             this.btnAddAdmin.Click += new System.EventHandler(this.btnAddAdmin_Click);
-            // 
-            // btnRemoveAdmin
-            // 
-            this.btnRemoveAdmin.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-            this.btnRemoveAdmin.FlatAppearance.BorderSize = 5;
-            this.btnRemoveAdmin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.btnRemoveAdmin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnRemoveAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveAdmin.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveAdmin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnRemoveAdmin.Location = new System.Drawing.Point(171, 267);
-            this.btnRemoveAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnRemoveAdmin.Name = "btnRemoveAdmin";
-            this.btnRemoveAdmin.Size = new System.Drawing.Size(306, 74);
-            this.btnRemoveAdmin.TabIndex = 17;
-            this.btnRemoveAdmin.Text = "Remove Manager";
-            this.btnRemoveAdmin.UseVisualStyleBackColor = true;
-            this.btnRemoveAdmin.Click += new System.EventHandler(this.btnRemoveAdmin_Click);
-            // 
-            // btnViewAdmins
-            // 
-            this.btnViewAdmins.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
-            this.btnViewAdmins.FlatAppearance.BorderSize = 5;
-            this.btnViewAdmins.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.btnViewAdmins.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnViewAdmins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewAdmins.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewAdmins.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnViewAdmins.Location = new System.Drawing.Point(171, 345);
-            this.btnViewAdmins.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnViewAdmins.Name = "btnViewAdmins";
-            this.btnViewAdmins.Size = new System.Drawing.Size(306, 74);
-            this.btnViewAdmins.TabIndex = 18;
-            this.btnViewAdmins.Text = "View All Managers";
-            this.btnViewAdmins.UseVisualStyleBackColor = true;
-            this.btnViewAdmins.Click += new System.EventHandler(this.btnViewAdmins_Click);
             // 
             // btnServiceDashboard
             // 
@@ -193,10 +155,10 @@
             this.btnServiceDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnServiceDashboard.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnServiceDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnServiceDashboard.Location = new System.Drawing.Point(171, 423);
+            this.btnServiceDashboard.Location = new System.Drawing.Point(12, 277);
             this.btnServiceDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnServiceDashboard.Name = "btnServiceDashboard";
-            this.btnServiceDashboard.Size = new System.Drawing.Size(306, 88);
+            this.btnServiceDashboard.Size = new System.Drawing.Size(271, 88);
             this.btnServiceDashboard.TabIndex = 19;
             this.btnServiceDashboard.Text = "Service Manager \r\nDashboard";
             this.btnServiceDashboard.UseVisualStyleBackColor = true;
@@ -206,13 +168,13 @@
             // 
             this.dgvAdmins.BackgroundColor = System.Drawing.Color.White;
             this.dgvAdmins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAdmins.Location = new System.Drawing.Point(510, 189);
+            this.dgvAdmins.Location = new System.Drawing.Point(289, 189);
             this.dgvAdmins.Name = "dgvAdmins";
             this.dgvAdmins.RowHeadersWidth = 51;
             this.dgvAdmins.RowTemplate.Height = 80;
-            this.dgvAdmins.Size = new System.Drawing.Size(437, 322);
+            this.dgvAdmins.Size = new System.Drawing.Size(680, 322);
             this.dgvAdmins.TabIndex = 20;
-            this.dgvAdmins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvAdmins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdmins_CellContentClick);
             // 
             // AdminManagementForm
             // 
@@ -224,8 +186,6 @@
             this.ClientSize = new System.Drawing.Size(981, 618);
             this.Controls.Add(this.dgvAdmins);
             this.Controls.Add(this.btnServiceDashboard);
-            this.Controls.Add(this.btnViewAdmins);
-            this.Controls.Add(this.btnRemoveAdmin);
             this.Controls.Add(this.btnAddAdmin);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnBackToHome);
@@ -254,8 +214,6 @@
         private System.Windows.Forms.Button btnBackToHome;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnAddAdmin;
-        private System.Windows.Forms.Button btnRemoveAdmin;
-        private System.Windows.Forms.Button btnViewAdmins;
         private System.Windows.Forms.Button btnServiceDashboard;
         private System.Windows.Forms.DataGridView dgvAdmins;
     }

@@ -59,14 +59,15 @@ namespace PowderCoatingApp
 
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private async void btnRegister_Click(object sender, EventArgs e)
         {
             string name = txtName.Text.Trim();
-            string email = txtEmail.Text.Trim(); // That to normalize email
+            string email = txtEmail.Text.Trim().ToLower(); // That to normalize email
             string phone = txtPhone.Text.Trim();
             string password = txtPassword.Text.Trim();
             string confirmPassword = txtConfirmPassword.Text.Trim();
 
+            // Basic validation
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmPassword) ||
                 avatarBytes == null)
@@ -75,6 +76,21 @@ namespace PowderCoatingApp
                 return;
             }
 
+            // Email format check
+            if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$") || email.Count(c => c == '@') != 1)
+            {
+                MessageBox.Show("Please enter a valid email address.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Phone number check - only digits, and length between 8 and 15
+            if (!System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d{8,15}$"))
+            {
+                MessageBox.Show("Phone number must contain only digits and be between 8 to 15 digits long.", "Invalid Phone", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             if (password != confirmPassword)
             {
                 MessageBox.Show("Passwords do not match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -82,7 +98,8 @@ namespace PowderCoatingApp
             }
 
             string passwordHash = HashPassword(password);
-            string connectionString = "server=localhost;port=3300;user=root;password=qwerty;database=PowderCoatingDB;";
+            string connectionString = "server=localhost;port=3306;user=root;password=;database=PowderCoatingDB;";
+            //string connectionString = "server=localhost;port=3306;user=root;password=qwerty;database=PowderCoatingDB;";
 
             try
             {
@@ -102,7 +119,37 @@ namespace PowderCoatingApp
                         return;
                     }
 
-                    // Insert into users table
+                    // Check if MySQL user already exists
+                    string checkUserQuery = "SELECT COUNT(*) FROM mysql.user WHERE user = @user";
+                    using (MySqlCommand checkUserCmd = new MySqlCommand(checkUserQuery, conn))
+                    {
+                        checkUserCmd.Parameters.AddWithValue("@user", name);
+                        long userExists = (long)checkUserCmd.ExecuteScalar();
+                        if (userExists > 0)
+                        {
+                            MessageBox.Show("MySQL user already exists!", "Duplicate User", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+
+                    // Create MySQL user
+                    string createUserQuery = $"CREATE USER '{name}'@'localhost' IDENTIFIED BY '{password}';";
+                    MySqlCommand createUserCmd = new MySqlCommand(createUserQuery, conn);
+                    createUserCmd.ExecuteNonQuery();
+
+                    // Grant basic permissions
+                    //string grantQuery = $"GRANT SELECT, INSERT, UPDATE ON PowderCoatingDB.* TO '{name}'@'localhost';";
+                    //MySqlCommand grantCmd = new MySqlCommand(grantQuery, conn);
+                    //grantCmd.ExecuteNonQuery();
+
+                    // Grant limited permissions suitable for a Service Manager
+                    string grantPermissions = @"GRANT SELECT, INSERT, UPDATE, DELETE ON PowderCoatingDB.users TO '" + name + @"'@'localhost';
+                                        GRANT SELECT, INSERT, UPDATE, DELETE ON PowderCoatingDB.orders TO '" + name + @"'@'localhost';";
+                    MySqlCommand grantCmd = new MySqlCommand(grantPermissions, conn);
+                    grantCmd.ExecuteNonQuery();
+
+
+                    // Insert into users table (with automatic timestamp for creationDate)
                     string userQuery = @"INSERT INTO users (name, email, passwordHash, phoneNumber, role, avatar)
                                  VALUES (@name, @email, @password, @phone, 'ServiceManager', @avatar)";
                     MySqlCommand cmdUser = new MySqlCommand(userQuery, conn);
@@ -114,22 +161,29 @@ namespace PowderCoatingApp
                     cmdUser.ExecuteNonQuery();
 
                     // Log the query for debugging
-                    MessageBox.Show($"Executing query: {cmdUser.CommandText}");
+                    //MessageBox.Show($"Executing query: {cmdUser.CommandText}");
+                    //cmdUser.ExecuteNonQuery();
 
-                    cmdUser.ExecuteNonQuery();
-
+                    // Get the userId of the inserted user
                     long userId = cmdUser.LastInsertedId;
 
-                    // Insert into servicemanagers table
-                    string managerQuery = "INSERT INTO servicemanagers (employeeNumber, userID) VALUES (@empNum, @userId)";
+                    // Insert into servicemanagers table (only for Service Manager-specific data)
+                    string managerQuery = "INSERT INTO servicemanagers (employeeNumber, userID, name, creationDate) VALUES (@empNum, @userId, @name, @creationDate)";
                     MySqlCommand cmdManager = new MySqlCommand(managerQuery, conn);
                     cmdManager.Parameters.AddWithValue("@empNum", Guid.NewGuid().ToString().Substring(0, 8));
                     cmdManager.Parameters.AddWithValue("@userId", userId);
+                    cmdManager.Parameters.AddWithValue("@name", name); // Assuming 'name' is already captured from user input
+                    //cmdManager.Parameters.AddWithValue("@creationDate", DateTime.Now); // Or just use CURRENT_TIMESTAMP 
                     cmdManager.ExecuteNonQuery();
+
+
+
                 }
 
                 MessageBox.Show("Service Manager registered successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                //this.Close();
+                ClearFormFields();
+
             }
             catch (MySqlException ex)
             {
@@ -162,6 +216,18 @@ namespace PowderCoatingApp
                 avatarBytes = File.ReadAllBytes(filePath); // Save image to the database
             }
         }
+
+        private void ClearFormFields()
+        {
+            txtName.Clear();
+            txtEmail.Clear();
+            txtPhone.Clear();
+            txtPassword.Clear();
+            txtConfirmPassword.Clear();
+            avatarBytes = null;
+            pictureBoxAvatar.Image = null;
+        }
+
 
         private void pictureBoxAvatar_Click(object sender, EventArgs e)
         {
