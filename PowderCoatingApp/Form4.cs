@@ -19,16 +19,18 @@ namespace PowderCoatingApp
     {
         string connectionString = "server=localhost;port=3306;user=root;password=;database=PowderCoatingDB;";
         //string connectionString = "server=localhost;port=3306;user=root;password=qwerty;database=PowderCoatingDB;";
-        
-        public AdminManagementForm()
+
+        private int loggedInUserId;
+        public AdminManagementForm(int userId)
         {
             InitializeComponent();
+            loggedInUserId = userId;
             timerDateTime.Start();
             dgvAdmins.CellPainting += dgvAdmins_CellPainting;
             dgvAdmins.CellContentClick += dgvAdmins_CellContentClick;
             dgvAdmins.CellClick += dgvAdmins_CellClick;
 
-
+            LoadChiefAdminName();
         }
 
         private void AdminManagementForm_Load(object sender, EventArgs e)
@@ -45,6 +47,32 @@ namespace PowderCoatingApp
         {
             lblDateTime.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss");
         }
+
+        private void LoadChiefAdminName()
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT name FROM users WHERE userID = @userId";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@userId", loggedInUserId);
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        string chiefName = result.ToString();
+                        lblWelcome.Text = $"Welcome, {chiefName}!"; //need to check in Form6
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading Chief Admin name: " + ex.Message);
+                }
+            }
+        }
+
 
         private void LoadManagers()
         {
@@ -367,7 +395,7 @@ namespace PowderCoatingApp
 
         private async void btnAddAdmin_Click(object sender, EventArgs e)
         {
-            AddAdminForm addAdmin = new AddAdminForm();// create this next - done
+            AddAdminForm addAdmin = new AddAdminForm(loggedInUserId);// create this next - done
             await Animator.FadeOut(this);
             await Animator.FadeIn(addAdmin);
         }       
@@ -375,9 +403,9 @@ namespace PowderCoatingApp
 
         private void btnServiceDashboard_Click(object sender, EventArgs e)
         {
-            //ServiceManagerDashboard dashboard = new ServiceManagerDashboard(); // I’ll create this later
-            //dashboard.Show();
-            //this.Hide();
+            ServiceManagerDashboardForm dashboard = new ServiceManagerDashboardForm(loggedInUserId); // I’ll create this later
+            dashboard.Show();
+            this.Hide();
         }
 
         private async void btnBackToHome_Click(object sender, EventArgs e)
@@ -397,6 +425,10 @@ namespace PowderCoatingApp
         {
 
         }
-        
+
+        private void lblWelcome_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

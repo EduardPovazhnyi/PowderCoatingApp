@@ -39,6 +39,7 @@
             this.btnAddAdmin = new System.Windows.Forms.Button();
             this.btnServiceDashboard = new System.Windows.Forms.Button();
             this.dgvAdmins = new System.Windows.Forms.DataGridView();
+            this.lblWelcome = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdmins)).BeginInit();
             this.SuspendLayout();
@@ -122,7 +123,7 @@
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(232, 118);
+            this.lblTitle.Location = new System.Drawing.Point(232, 81);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(367, 38);
             this.lblTitle.TabIndex = 15;
@@ -176,6 +177,19 @@
             this.dgvAdmins.TabIndex = 20;
             this.dgvAdmins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdmins_CellContentClick);
             // 
+            // lblWelcome
+            // 
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.BackColor = System.Drawing.Color.Transparent;
+            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.ForeColor = System.Drawing.Color.White;
+            this.lblWelcome.Location = new System.Drawing.Point(234, 133);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(283, 28);
+            this.lblWelcome.TabIndex = 21;
+            this.lblWelcome.Text = "Welcome, [ManagerName]!";
+            this.lblWelcome.Click += new System.EventHandler(this.lblWelcome_Click);
+            // 
             // AdminManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -184,6 +198,7 @@
             this.BackgroundImage = global::PowderCoatingApp.Properties.Resources.BackGroundImage2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(981, 618);
+            this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.dgvAdmins);
             this.Controls.Add(this.btnServiceDashboard);
             this.Controls.Add(this.btnAddAdmin);
@@ -216,5 +231,6 @@
         private System.Windows.Forms.Button btnAddAdmin;
         private System.Windows.Forms.Button btnServiceDashboard;
         private System.Windows.Forms.DataGridView dgvAdmins;
+        private System.Windows.Forms.Label lblWelcome;
     }
 }

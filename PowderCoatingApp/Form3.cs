@@ -21,7 +21,7 @@ namespace PowderCoatingApp
 
         private void btnRegisterCustomer_Click(object sender, EventArgs e)
         {
-            RegistrationForm customerForm = new RegistrationForm(); // for Users
+            RegistrationForm customerForm = new RegistrationForm(RegistrationMode.SelfRegisterCustomer); // for Users
             customerForm.Show();
             this.Hide();
         }
@@ -98,7 +98,8 @@ namespace PowderCoatingApp
                     {
                         // Success: open AdminManagementForm
                         this.Hide();
-                        AdminManagementForm adminForm = new AdminManagementForm();
+                        int userId = reader.GetInt32("userID");
+                        AdminManagementForm adminForm = new AdminManagementForm(userId);
                         adminForm.Show();
                     }
                     else

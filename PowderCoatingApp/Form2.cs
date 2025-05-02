@@ -14,13 +14,25 @@ using System.IO;
 
 namespace PowderCoatingApp
 {
+    //Registration Mode
+    public enum RegistrationMode
+    {
+        SelfRegisterCustomer,
+        ManagerAddCustomer,
+        AdminAddCustomer
+    }
+
     public partial class RegistrationForm : Form
     {
         private byte[] avatarImageBytes = null;
 
-        public RegistrationForm()
+        //to accept a mode
+        private RegistrationMode mode;
+
+        public RegistrationForm(RegistrationMode mode = RegistrationMode.SelfRegisterCustomer)
         {
             InitializeComponent();
+            this.mode = mode;
             timerDateTime.Start();
         }
 
@@ -140,10 +152,18 @@ namespace PowderCoatingApp
                     cmdCustomer.ExecuteNonQuery();
 
                     // 7. Show success and redirect
-                    MessageBox.Show("Registration successful! Please log in.");
-                    this.Hide();
-                    HomeForm home = new HomeForm();
-                    home.Show();
+                    if (mode == RegistrationMode.SelfRegisterCustomer)
+                    {
+                        MessageBox.Show("Registration successful! Please log in.");
+                        this.Hide();
+                        new HomeForm().Show(); // Form 1
+                    }
+                    else if (mode == RegistrationMode.ManagerAddCustomer || mode == RegistrationMode.AdminAddCustomer)
+                    {
+                        MessageBox.Show("Customer registered successfully.");
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
                 catch (Exception ex)
                 {

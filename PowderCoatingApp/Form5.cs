@@ -16,11 +16,14 @@ namespace PowderCoatingApp
 {
     public partial class AddAdminForm : Form
     {
+        private int userId;
+
         private byte[] avatarBytes;
 
-        public AddAdminForm()
+        public AddAdminForm(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
             timerDateTime.Start();
         }
 
@@ -39,7 +42,7 @@ namespace PowderCoatingApp
 
         private async void btnBackToHome_Click(object sender, EventArgs e)
         {
-            AdminManagementForm adminManagement = new AdminManagementForm();
+            AdminManagementForm adminManagement = new AdminManagementForm((int)userId);
             await Animator.FadeOut(this);
             await Animator.FadeIn(adminManagement);            
         }
