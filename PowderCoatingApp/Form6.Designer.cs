@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.lblCompanyName = new System.Windows.Forms.Label();
             this.lblAppName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.logo1 = new System.Windows.Forms.PictureBox();
             this.btnBackToHome = new System.Windows.Forms.Button();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
@@ -43,7 +43,8 @@
             this.btnViewOrders = new System.Windows.Forms.Button();
             this.btnViewCustomers = new System.Windows.Forms.Button();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btnNotifications = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.logo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,17 +71,18 @@
             this.lblAppName.TabIndex = 11;
             this.lblAppName.Text = "Powder Coating Service App";
             // 
-            // pictureBox1
+            // logo1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::PowderCoatingApp.Properties.Resources.Logo2;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(187, 174);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.logo1.BackColor = System.Drawing.Color.Transparent;
+            this.logo1.Image = global::PowderCoatingApp.Properties.Resources.Logo2;
+            this.logo1.Location = new System.Drawing.Point(12, 11);
+            this.logo1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.logo1.Name = "logo1";
+            this.logo1.Size = new System.Drawing.Size(187, 174);
+            this.logo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo1.TabIndex = 12;
+            this.logo1.TabStop = false;
+            this.logo1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnBackToHome
             // 
@@ -112,6 +114,7 @@
             this.lblDateTime.Size = new System.Drawing.Size(134, 29);
             this.lblDateTime.TabIndex = 17;
             this.lblDateTime.Text = "Date Time";
+            this.lblDateTime.Click += new System.EventHandler(this.lblDateTime_Click);
             // 
             // timerDateTime
             // 
@@ -150,7 +153,7 @@
             this.btnAddCustomer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
             this.btnAddCustomer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAddCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddCustomer.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCustomer.Font = new System.Drawing.Font("Segoe UI", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAddCustomer.Location = new System.Drawing.Point(12, 199);
             this.btnAddCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -195,7 +198,6 @@
             this.btnEditProfile.TabIndex = 22;
             this.btnEditProfile.Text = "Edit Profile";
             this.btnEditProfile.UseVisualStyleBackColor = true;
-            this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
             // 
             // btnViewOrders
             // 
@@ -209,9 +211,9 @@
             this.btnViewOrders.Location = new System.Drawing.Point(275, 139);
             this.btnViewOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewOrders.Name = "btnViewOrders";
-            this.btnViewOrders.Size = new System.Drawing.Size(255, 49);
+            this.btnViewOrders.Size = new System.Drawing.Size(219, 49);
             this.btnViewOrders.TabIndex = 23;
-            this.btnViewOrders.Text = "View Orders";
+            this.btnViewOrders.Text = "Orders";
             this.btnViewOrders.UseVisualStyleBackColor = true;
             this.btnViewOrders.Click += new System.EventHandler(this.btnViewOrders_Click);
             // 
@@ -224,12 +226,12 @@
             this.btnViewCustomers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewCustomers.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewCustomers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnViewCustomers.Location = new System.Drawing.Point(536, 139);
+            this.btnViewCustomers.Location = new System.Drawing.Point(510, 139);
             this.btnViewCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewCustomers.Name = "btnViewCustomers";
-            this.btnViewCustomers.Size = new System.Drawing.Size(255, 49);
+            this.btnViewCustomers.Size = new System.Drawing.Size(219, 49);
             this.btnViewCustomers.TabIndex = 24;
-            this.btnViewCustomers.Text = "View Customers";
+            this.btnViewCustomers.Text = "Customers";
             this.btnViewCustomers.UseVisualStyleBackColor = true;
             this.btnViewCustomers.Click += new System.EventHandler(this.btnViewCustomers_Click);
             // 
@@ -245,6 +247,24 @@
             this.dgvData.TabIndex = 25;
             this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellContentClick);
             // 
+            // btnNotifications
+            // 
+            this.btnNotifications.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
+            this.btnNotifications.FlatAppearance.BorderSize = 5;
+            this.btnNotifications.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.btnNotifications.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnNotifications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNotifications.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNotifications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnNotifications.Location = new System.Drawing.Point(738, 139);
+            this.btnNotifications.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNotifications.Name = "btnNotifications";
+            this.btnNotifications.Size = new System.Drawing.Size(219, 49);
+            this.btnNotifications.TabIndex = 26;
+            this.btnNotifications.Text = "Notifications";
+            this.btnNotifications.UseVisualStyleBackColor = true;
+            this.btnNotifications.Click += new System.EventHandler(this.btnNotifications_Click);
+            // 
             // ServiceManagerDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -252,6 +272,7 @@
             this.BackgroundImage = global::PowderCoatingApp.Properties.Resources.BackGroundImage2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(981, 618);
+            this.Controls.Add(this.btnNotifications);
             this.Controls.Add(this.dgvData);
             this.Controls.Add(this.btnViewCustomers);
             this.Controls.Add(this.btnViewOrders);
@@ -262,14 +283,14 @@
             this.Controls.Add(this.lblServiceManagerDashboard);
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.btnBackToHome);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.logo1);
             this.Controls.Add(this.lblAppName);
             this.Controls.Add(this.lblCompanyName);
             this.Name = "ServiceManagerDashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Service Manager Dashboard Powder Coating Service PCS Povazhna Sereda";
             this.Load += new System.EventHandler(this.ServiceManagerDashboard_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -280,7 +301,7 @@
 
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.Label lblAppName;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox logo1;
         private System.Windows.Forms.Button btnBackToHome;
         private System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.Timer timerDateTime;
@@ -292,5 +313,6 @@
         private System.Windows.Forms.Button btnViewOrders;
         private System.Windows.Forms.Button btnViewCustomers;
         private System.Windows.Forms.DataGridView dgvData;
+        private System.Windows.Forms.Button btnNotifications;
     }
 }

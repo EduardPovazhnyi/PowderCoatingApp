@@ -401,11 +401,12 @@ namespace PowderCoatingApp
         }       
         
 
-        private void btnServiceDashboard_Click(object sender, EventArgs e)
+        private async void btnServiceDashboard_Click(object sender, EventArgs e)
         {
             ServiceManagerDashboardForm dashboard = new ServiceManagerDashboardForm(loggedInUserId); // I’ll create this later
-            dashboard.Show();
-            this.Hide();
+            await Animator.FadeOut(this);
+            await Animator.FadeIn(dashboard);
+            
         }
 
         private async void btnBackToHome_Click(object sender, EventArgs e)

@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.lblCompanyName = new System.Windows.Forms.Label();
             this.lblAppName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.logo1 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.btnAbout = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCompanyName
@@ -63,17 +63,17 @@
             this.lblAppName.TabIndex = 1;
             this.lblAppName.Text = "Powder Coating Service App";
             // 
-            // pictureBox1
+            // logo1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::PowderCoatingApp.Properties.Resources.Logo2;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(187, 174);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.logo1.BackColor = System.Drawing.Color.Transparent;
+            this.logo1.Image = global::PowderCoatingApp.Properties.Resources.Logo2;
+            this.logo1.Location = new System.Drawing.Point(12, 12);
+            this.logo1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.logo1.Name = "logo1";
+            this.logo1.Size = new System.Drawing.Size(187, 174);
+            this.logo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo1.TabIndex = 4;
+            this.logo1.TabStop = false;
             // 
             // btnLogin
             // 
@@ -162,7 +162,7 @@
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.logo1);
             this.Controls.Add(this.lblAppName);
             this.Controls.Add(this.lblCompanyName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -172,7 +172,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Powder Coating Service PCS Povazhna Sereda";
             this.Load += new System.EventHandler(this.HomeForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,7 +182,7 @@
 
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.Label lblAppName;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox logo1;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label lblDateTime;

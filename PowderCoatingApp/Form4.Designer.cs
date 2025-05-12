@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.logo1 = new System.Windows.Forms.PictureBox();
             this.lblCompanyName = new System.Windows.Forms.Label();
             this.lblAppName = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
@@ -40,22 +40,22 @@
             this.btnServiceDashboard = new System.Windows.Forms.Button();
             this.dgvAdmins = new System.Windows.Forms.DataGridView();
             this.lblWelcome = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdmins)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // logo1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::PowderCoatingApp.Properties.Resources.Logo2;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(187, 174);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.logo1.BackColor = System.Drawing.Color.Transparent;
+            this.logo1.Image = global::PowderCoatingApp.Properties.Resources.Logo2;
+            this.logo1.Location = new System.Drawing.Point(12, 11);
+            this.logo1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.logo1.Name = "logo1";
+            this.logo1.Size = new System.Drawing.Size(187, 174);
+            this.logo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo1.TabIndex = 7;
+            this.logo1.TabStop = false;
+            this.logo1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lblCompanyName
             // 
@@ -207,12 +207,12 @@
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.lblAppName);
             this.Controls.Add(this.lblCompanyName);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.logo1);
             this.Name = "AdminManagementForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Management Form Powder Coating Service PCS Povazhna Sereda";
             this.Load += new System.EventHandler(this.AdminManagementForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdmins)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -221,7 +221,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox logo1;
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.Label lblAppName;
         private System.Windows.Forms.Label lblDateTime;

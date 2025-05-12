@@ -44,12 +44,18 @@ namespace PowderCoatingApp
             this.BackgroundImageLayout = ImageLayout.Stretch;
             timerDateTime.Start();
 
-            // Add items to Payment Method ComboBox
+            // Payment method options in ComboBox
             cmbPaymentMethod.Items.Add("Cash");
             cmbPaymentMethod.Items.Add("Credit Card");
             cmbPaymentMethod.Items.Add("Bank Transfer");
             cmbPaymentMethod.Items.Add("PayPal");
             cmbPaymentMethod.SelectedIndex = 0;
+
+            // Hide Back button for Admin or Manager-initiated registrations
+            if (mode == RegistrationMode.ManagerAddCustomer || mode == RegistrationMode.AdminAddCustomer)
+            {
+                btnBackToHome.Visible = false;
+            }
         }
 
         private void lblDateTime_Click(object sender, EventArgs e)
@@ -116,8 +122,8 @@ namespace PowderCoatingApp
             string selectedPaymentMethod = cmbPaymentMethod.SelectedItem.ToString();
 
             // 4. Connect to MySQL
-            string connectionString = "server=localhost;user=root;password=your_password;database=PowderCoatingDB;";
-
+            //string connectionString = "server=localhost;user=root;password=your_password;database=PowderCoatingDB;";
+            string connectionString = "server=localhost;port=3306;user=root;password=;database=PowderCoatingDB;";
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 try
@@ -125,7 +131,7 @@ namespace PowderCoatingApp
                     conn.Open();
 
                     // 5. Insert into Users table
-                    string queryUser = @"INSERT INTO Users (name, email, password, phoneNumber, role) 
+                    string queryUser = @"INSERT INTO Users (name, email, passwordHash, phoneNumber, role, avatar) 
                                  VALUES (@name, @email, @passwordHash, @phone, 'Customer', @avatar)";
                     MySqlCommand cmdUser = new MySqlCommand(queryUser, conn);
                     cmdUser.Parameters.AddWithValue("@name", txtName.Text);
