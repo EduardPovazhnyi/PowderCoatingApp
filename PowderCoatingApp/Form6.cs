@@ -553,7 +553,7 @@ namespace PowderCoatingApp
 
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
-            var addOrderForm = new AddOrderForm();
+            var addOrderForm = new AddOrderForm(loggedInUserId);
             addOrderForm.ShowDialog();
             LoadOrders();
         }
@@ -584,6 +584,11 @@ namespace PowderCoatingApp
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditProfile_Click(object sender, EventArgs e)
         {
 
         }
