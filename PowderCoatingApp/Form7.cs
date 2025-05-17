@@ -35,18 +35,33 @@ namespace PowderCoatingApp
             this.BackgroundImage = Properties.Resources.BackGroundImage2;
             this.BackgroundImageLayout = ImageLayout.Stretch;
             timerDateTime.Start();
-            
+
+            // Fill delivery combo box
             cmbDelivery.Items.AddRange(new string[] { "pickup", "delivery", "pickup/delivery", "no" });
+            cmbDelivery.SelectedItem = "no";
+
+            // all standard payment options
+            cmbPaymentMethod.Items.Clear();
+            cmbPaymentMethod.Items.AddRange(new string[] { "Cash", "Credit Card", "Bank Transfer", "PayPal", "Other" });
 
             if (userRole == "customer")
             {
+                
                 cmbCustomer.Visible = false;
                 lblCustomer.Visible = false;// the drop-down list is not displayed — but the customerId is still needed
-                
+                // (Customer ID will be taken from loggedInUserId)
             }
             else
             {
                 LoadCustomers();
+            }
+
+
+
+            // Hide Back button for admin roles
+            if (userRole == "ChiefAdmin" || userRole == "ServiceManager")
+            {
+                btnBackToHome.Visible = false;
             }
         }
 
@@ -55,12 +70,14 @@ namespace PowderCoatingApp
             using (var conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT id, name FROM customers", conn);
+                string query = @"SELECT c.customerID, u.name FROM customers c JOIN users u ON c.userID = u.userID";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        cmbCustomer.Items.Add(new ComboBoxItem(reader.GetString("name"), reader.GetInt32("id")));
+                        cmbCustomer.Items.Add(new ComboBoxItem(reader.GetString("name"), reader.GetInt32("customerID")));
                     }
                 }
             }
@@ -90,6 +107,21 @@ namespace PowderCoatingApp
                         string specifications = txtSpecifications.Text;
                         string address = txtAddress.Text;
                         string delivery = cmbDelivery.SelectedItem?.ToString() ?? "no";
+                        // Get the payment method from the combobox
+                        string paymentMethod = cmbPaymentMethod.SelectedItem?.ToString();
+                        if (paymentMethod == "Other" && string.IsNullOrWhiteSpace(txtCustomPaymentMethod.Text))
+                        {
+                            MessageBox.Show("Please specify the custom payment method.");
+                            return -1;
+                        }
+
+                        // Update paymentInfo in the customers table
+                        string updateCustomerPaymentQuery = @"UPDATE customers SET paymentInfo = @paymentInfo WHERE customerID = @customerId";
+                        MySqlCommand updatePaymentCmd = new MySqlCommand(updateCustomerPaymentQuery, conn, transaction);
+                        updatePaymentCmd.Parameters.AddWithValue("@paymentInfo", paymentMethod);
+                        updatePaymentCmd.Parameters.AddWithValue("@customerId", customerId);
+                        updatePaymentCmd.ExecuteNonQuery();
+
 
                         // Insert order
                         string insertOrderQuery = @"INSERT INTO orders (customerId, productType, color, specifications, address, delivery, createdBy)
@@ -104,12 +136,14 @@ namespace PowderCoatingApp
                         cmd.Parameters.AddWithValue("@address", address);
                         cmd.Parameters.AddWithValue("@delivery", delivery);
                         cmd.Parameters.AddWithValue("@createdBy", loggedInUserId);
+                        // cmd.Parameters.AddWithValue("@createdBy", loggedInUserId); 
+                        // If store paymentMethod for each order, need to add a field to the database and use this parameter.
 
                         // Get the new order ID
                         newOrderId = Convert.ToInt32(cmd.ExecuteScalar());
 
                         // Save Before photos to DB
-                        string photosDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Photos", "Before");
+                        string photosDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Photos", "Before", $"Order_{newOrderId}");
 
                         if (!Directory.Exists(photosDir))
                             Directory.CreateDirectory(photosDir);
@@ -142,7 +176,7 @@ namespace PowderCoatingApp
 
                             bool isMain = (i == mainBeforePhotoIndex);
 
-                            string insertPhotoQuery = @"INSERT INTO photos (orderId, path, photoType, isMain)
+                            string insertPhotoQuery = @"INSERT INTO photos (orderId, imagePath, photoType, isMain)
                                                         VALUES (@orderId, @path, 'before', @isMain)";
                             MySqlCommand photoCmd = new MySqlCommand(insertPhotoQuery, conn, transaction);
                             photoCmd.Parameters.AddWithValue("@orderId", newOrderId);
@@ -213,15 +247,22 @@ namespace PowderCoatingApp
             using (var conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT address, paymentInfo FROM customers WHERE id = @id", conn);
-                cmd.Parameters.AddWithValue("@id", customerId);
+                MySqlCommand cmd = new MySqlCommand("SELECT address, paymentInfo FROM customers WHERE customerID = @customerID", conn);
+                cmd.Parameters.AddWithValue("@customerID", customerId);
 
                 using (var reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
                     {
                         txtAddress.Text = reader["address"].ToString();
-                        cmbPaymentMethod.Text = reader["paymentInfo"].ToString(); // Якщо треба
+                        // display other payment method
+                        string methodFromDb = reader["paymentInfo"].ToString();
+
+                        if (!cmbPaymentMethod.Items.Contains(methodFromDb))
+                        {
+                            cmbPaymentMethod.Items.Add(methodFromDb); // додай, якщо нестандартний варіант
+                        }
+                        cmbPaymentMethod.SelectedItem = methodFromDb;
                     }
                 }
             }
@@ -426,7 +467,15 @@ namespace PowderCoatingApp
 
         private void cmbPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (cmbPaymentMethod.SelectedItem?.ToString() == "Other")
+            {
+                txtCustomPaymentMethod.Visible = true;
+                txtCustomPaymentMethod.Focus();
+            }
+            else
+            {
+                txtCustomPaymentMethod.Visible = false;
+            }
         }
 
         private void lblPhotos_Click(object sender, EventArgs e)
@@ -483,6 +532,13 @@ namespace PowderCoatingApp
         {
             if (chkMain3.Checked)
             {
+                if (pictureBox3.Image == null)
+                {
+                    chkMain3.Checked = false;
+                    MessageBox.Show("Cannot set as Main. No photo in this slot.");
+                    return;
+                }
+
                 chkMain2.Checked = false;
                 chkMain1.Checked = false;
                 chkMain4.Checked = false;
@@ -494,6 +550,13 @@ namespace PowderCoatingApp
         {
             if (chkMain1.Checked)
             {
+                if (pictureBox1.Image == null)
+                {
+                    chkMain1.Checked = false;
+                    MessageBox.Show("Cannot set as Main. No photo in this slot.");
+                    return;
+                }
+
                 chkMain2.Checked = false;
                 chkMain3.Checked = false;
                 chkMain4.Checked = false;
@@ -505,6 +568,13 @@ namespace PowderCoatingApp
         {
             if (chkMain2.Checked)
             {
+                if (pictureBox2.Image == null)
+                {
+                    chkMain2.Checked = false;
+                    MessageBox.Show("Cannot set as Main. No photo in this slot.");
+                    return;
+                }
+
                 chkMain1.Checked = false;
                 chkMain3.Checked = false;
                 chkMain4.Checked = false;
@@ -516,6 +586,13 @@ namespace PowderCoatingApp
         {
             if (chkMain4.Checked)
             {
+                if (pictureBox4.Image == null)
+                {
+                    chkMain4.Checked = false;
+                    MessageBox.Show("Cannot set as Main. No photo in this slot.");
+                    return;
+                }
+
                 chkMain2.Checked = false;
                 chkMain3.Checked = false;
                 chkMain1.Checked = false;
@@ -527,11 +604,23 @@ namespace PowderCoatingApp
         {
             if (chkMain5.Checked)
             {
+                if (pictureBox5.Image == null)
+                {
+                    chkMain5.Checked = false;
+                    MessageBox.Show("Cannot set as Main. No photo in this slot.");
+                    return;
+                }
+
                 chkMain2.Checked = false;
                 chkMain3.Checked = false;
                 chkMain4.Checked = false;
                 chkMain1.Checked = false;
             }
+        }
+
+        private void txtCustomPaymentMethod_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

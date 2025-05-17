@@ -117,6 +117,9 @@ namespace PowderCoatingApp
                     dgvAdmins.RowTemplate.Height = 80;
                     dgvAdmins.RowHeadersWidth = 24;
 
+                    // Abort adding an empty string
+                    dgvAdmins.AllowUserToAddRows = false; 
+
                     // Define columns
                     dgvAdmins.Columns.Add(new DataGridViewTextBoxColumn
                     {
@@ -351,6 +354,10 @@ namespace PowderCoatingApp
 
         private void dgvAdmins_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Skip header clicks
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
             if (e.RowIndex >= 0 && dgvAdmins.Columns[e.ColumnIndex].HeaderText == "Avatar")
             {
                 using (OpenFileDialog ofd = new OpenFileDialog())

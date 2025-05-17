@@ -64,6 +64,7 @@
             this.chkMain3 = new System.Windows.Forms.CheckBox();
             this.chkMain4 = new System.Windows.Forms.CheckBox();
             this.chkMain5 = new System.Windows.Forms.CheckBox();
+            this.txtCustomPaymentMethod = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.logo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -370,7 +371,7 @@
             this.btnAddPhotos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
             this.btnAddPhotos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnAddPhotos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPhotos.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPhotos.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddPhotos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnAddPhotos.Location = new System.Drawing.Point(553, 388);
             this.btnAddPhotos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -493,6 +494,16 @@
             this.chkMain5.UseVisualStyleBackColor = false;
             this.chkMain5.CheckedChanged += new System.EventHandler(this.chkMain5_CheckedChanged);
             // 
+            // txtCustomPaymentMethod
+            // 
+            this.txtCustomPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomPaymentMethod.Location = new System.Drawing.Point(695, 414);
+            this.txtCustomPaymentMethod.Name = "txtCustomPaymentMethod";
+            this.txtCustomPaymentMethod.Size = new System.Drawing.Size(263, 28);
+            this.txtCustomPaymentMethod.TabIndex = 52;
+            this.txtCustomPaymentMethod.Visible = false;
+            this.txtCustomPaymentMethod.TextChanged += new System.EventHandler(this.txtCustomPaymentMethod_TextChanged);
+            // 
             // AddOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -500,6 +511,7 @@
             this.BackgroundImage = global::PowderCoatingApp.Properties.Resources.BackGroundImage2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(981, 618);
+            this.Controls.Add(this.txtCustomPaymentMethod);
             this.Controls.Add(this.chkMain5);
             this.Controls.Add(this.chkMain4);
             this.Controls.Add(this.chkMain3);
@@ -586,5 +598,6 @@
         private System.Windows.Forms.CheckBox chkMain3;
         private System.Windows.Forms.CheckBox chkMain4;
         private System.Windows.Forms.CheckBox chkMain5;
+        private System.Windows.Forms.TextBox txtCustomPaymentMethod;
     }
 }

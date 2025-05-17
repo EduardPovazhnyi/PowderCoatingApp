@@ -171,7 +171,7 @@ namespace PowderCoatingApp
                     long userId = cmdUser.LastInsertedId;
 
                     // Insert into servicemanagers table (only for Service Manager-specific data)
-                    string managerQuery = "INSERT INTO servicemanagers (employeeNumber, userID, name, creationDate) VALUES (@empNum, @userId, @name, @creationDate)";
+                    string managerQuery = "INSERT INTO servicemanagers (employeeNumber, userID, name) VALUES (@empNum, @userId, @name)";
                     MySqlCommand cmdManager = new MySqlCommand(managerQuery, conn);
                     cmdManager.Parameters.AddWithValue("@empNum", Guid.NewGuid().ToString().Substring(0, 8));
                     cmdManager.Parameters.AddWithValue("@userId", userId);

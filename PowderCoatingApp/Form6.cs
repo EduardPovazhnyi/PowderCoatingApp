@@ -384,7 +384,8 @@ namespace PowderCoatingApp
         private void dgvData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Skip header clicks
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
 
             if (dgvData.Columns[e.ColumnIndex].Name == "Edit")
             {
@@ -553,7 +554,7 @@ namespace PowderCoatingApp
 
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
-            var addOrderForm = new AddOrderForm(loggedInUserId);
+            var addOrderForm = new AddOrderForm(loggedInUserId, userRole);
             addOrderForm.ShowDialog();
             LoadOrders();
         }

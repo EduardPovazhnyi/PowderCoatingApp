@@ -273,12 +273,12 @@
             this.BackgroundImage = global::PowderCoatingApp.Properties.Resources.BackGroundImage2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(981, 618);
+            this.Controls.Add(this.btnAddOrder);
             this.Controls.Add(this.btnNotifications);
             this.Controls.Add(this.dgvData);
             this.Controls.Add(this.btnViewCustomers);
             this.Controls.Add(this.btnViewOrders);
             this.Controls.Add(this.btnEditProfile);
-            this.Controls.Add(this.btnAddOrder);
             this.Controls.Add(this.btnAddCustomer);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.lblServiceManagerDashboard);
