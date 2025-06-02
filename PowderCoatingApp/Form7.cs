@@ -31,7 +31,23 @@ namespace PowderCoatingApp
             InitializeComponent();
             loggedInUserId = userId;
             userRole = role;
+            LoadUserName(); // Show user name in lblWelcome
         }
+
+        private void LoadUserName()
+        {
+            using (var conn = new MySqlConnection("server=localhost;user=root;password=;database=powdercoatingdb;"))
+            {
+                string query = "SELECT name FROM users WHERE userID = @userID";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@userID", loggedInUserId);
+                conn.Open();
+                var name = cmd.ExecuteScalar();
+                if (name != null)
+                    lblWelcome.Text = "Welcome, " + name.ToString() + "!";
+            }
+        }
+
 
         private void AddOrderForm_Load(object sender, EventArgs e)
         {
@@ -232,13 +248,13 @@ namespace PowderCoatingApp
 
         }
 
+        // Back button: Open Customer Dashboard and close this form to avoid multiple windows
         private async void btnBackToHome_Click(object sender, EventArgs e)
         {
             //ServiceManagerDashboardForm serviceManagerDashboardForm = new ServiceManagerDashboardForm(loggedInUserId);
-            ServiceManagerDashboardForm home = new ServiceManagerDashboardForm(loggedInUserId);
             await Animator.FadeOut(this);
-            await Animator.FadeIn(home);
-            
+            this.Close(); // Close current AddOrderForm
+
         }
         // Autofill address when selecting a client
         private void cmbCustomer_SelectedIndexChanged(object sender, EventArgs e)

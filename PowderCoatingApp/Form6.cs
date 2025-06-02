@@ -107,7 +107,7 @@ namespace PowderCoatingApp
             dgvData.DataSource = null;
             dgvData.Columns.Clear();
             dgvData.Rows.Clear();
-            //???
+            //Avoid Grid bug after adding Photo After
             dgvData.AutoGenerateColumns = true;
 
             // Bind oder handler
@@ -282,7 +282,24 @@ namespace PowderCoatingApp
                 dgvData.Columns.Insert(colIndex, statusCol);
             }
 
-            //???
+            // Add ComboBox for delivery
+            if (dgvData.Columns.Contains("delivery"))
+            {
+                int colIndex = dgvData.Columns["delivery"].Index;
+                dgvData.Columns.Remove("delivery");
+
+                DataGridViewComboBoxColumn deliveryCol = new DataGridViewComboBoxColumn
+                {
+                    Name = "delivery",
+                    HeaderText = "Delivery",
+                    DataPropertyName = "delivery",
+                    Items = { "pickup", "delivery", "pickup/delivery", "no" },
+                    FlatStyle = FlatStyle.Flat
+                };
+                dgvData.Columns.Insert(colIndex, deliveryCol);
+            }
+
+            //??? It worked, now there is no double generation of Grid after adding Photo After
             dgvData.AutoGenerateColumns = false;
 
             // Add Edit/Delete buttons only if missing
@@ -1113,9 +1130,25 @@ namespace PowderCoatingApp
 
         private async void btnBackToHome_Click(object sender, EventArgs e)
         {
-            AdminManagementForm adminManagementForm = new AdminManagementForm(loggedInUserId);
-            await Animator.FadeOut(this);
-            await Animator.FadeIn(adminManagementForm);
+            if (userRole == "ChiefAdmin")
+            {
+                // Only ChiefAdmin goes to AdminManagementForm
+                AdminManagementForm adminManagementForm = new AdminManagementForm(loggedInUserId);
+                await Animator.FadeOut(this);
+                await Animator.FadeIn(adminManagementForm);
+            }
+            else if (userRole == "ServiceManager")
+            {
+                // ServiceManager goes to HomeForm (замінити HomeForm на твою домашню форму)
+                HomeForm homeForm = new HomeForm();
+                await Animator.FadeOut(this);
+                await Animator.FadeIn(homeForm);
+            }
+            else
+            {
+                // For other roles: show error or redirect somewhere else
+                MessageBox.Show("You do not have access to this section.");
+            }
         }
 
         private void ServiceManagerDashboard_Load(object sender, EventArgs e)

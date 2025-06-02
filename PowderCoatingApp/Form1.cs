@@ -11,11 +11,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PowderCoatingApp;
 
 namespace PowderCoatingApp
 {
     public partial class HomeForm : Form
     {
+        
         public HomeForm()
         {
             InitializeComponent();
@@ -56,9 +58,12 @@ namespace PowderCoatingApp
 
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-
+            // Creating a Login Form (Form 9)
+            LoginForm loginForm = new LoginForm(); 
+            await Animator.FadeOut(this);
+            await Animator.FadeIn(loginForm);
         }
     }
 }
