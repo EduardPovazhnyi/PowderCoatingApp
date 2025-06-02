@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Name: Eduard Povazhnyi
+//Class: H48W35-HNDCOMSD-F242A-L
+//Project description: App for Powder Coatings Services
+//Date: 05/2025
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -172,7 +176,7 @@ namespace PowderCoatingApp
                             File.Copy(originalPath, destinationPath, true); // overwrite = true
 
                             // Relative path to save to database
-                            string relativePath = Path.Combine("Photos", "Before", uniqueFileName);
+                            string relativePath = Path.Combine("Photos", "Before", $"Order_{newOrderId}", uniqueFileName);
 
                             bool isMain = (i == mainBeforePhotoIndex);
 

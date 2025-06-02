@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Name: Eduard Povazhnyi
+//Class: H48W35-HNDCOMSD-F242A-L
+//Project description: App for Powder Coatings Services
+//Date: 05/2025
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +25,7 @@ namespace PowderCoatingApp
         //string connectionString = "server=localhost;port=3306;user=root;password=qwerty;database=PowderCoatingDB;";
 
         private int loggedInUserId;
+
         public AdminManagementForm(int userId)
         {
             InitializeComponent();
