@@ -26,10 +26,10 @@ namespace PowderCoatingApp
         private readonly string connectionString = "server=localhost;user=root;password=;database=powdercoatingdb;";
 
 
-        public AddOrderForm(int userId, string role)
+        public AddOrderForm(int loggedInUserId, string role)
         {
             InitializeComponent();
-            loggedInUserId = userId;
+            this.loggedInUserId = loggedInUserId;
             userRole = role;
             LoadUserName(); // Show user name in lblWelcome
         }
@@ -70,6 +70,7 @@ namespace PowderCoatingApp
                 cmbCustomer.Visible = false;
                 lblCustomer.Visible = false;// the drop-down list is not displayed — but the customerId is still needed
                 // (Customer ID will be taken from loggedInUserId)
+                LoadCustomerInfo(loggedInUserId);
             }
             else
             {
@@ -102,8 +103,43 @@ namespace PowderCoatingApp
                 }
             }
         }
+        // method pulls up customer data by ID
+        private void LoadCustomerInfo(int userId)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT address, paymentInfo, delivery FROM customers WHERE userID=@uid";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@uid", userId);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        txtAddress.Text = reader["address"]?.ToString() ?? "";
+                        string delivery = reader["delivery"]?.ToString() ?? "no";
+                        if (!cmbDelivery.Items.Contains(delivery) && !string.IsNullOrWhiteSpace(delivery))
+                            cmbDelivery.Items.Add(delivery);
+                        cmbDelivery.SelectedItem = delivery;
 
-        
+                        string paymentInfo = reader["paymentInfo"]?.ToString() ?? "Cash";
+                        if (!cmbPaymentMethod.Items.Contains(paymentInfo) && !string.IsNullOrWhiteSpace(paymentInfo))
+                            cmbPaymentMethod.Items.Add(paymentInfo);
+                        cmbPaymentMethod.SelectedItem = paymentInfo;
+                    }
+                    else
+                    {
+                        // Defaults
+                        txtAddress.Text = "";
+                        cmbDelivery.SelectedItem = "no";
+                        cmbPaymentMethod.SelectedItem = "Cash";
+                    }
+                }
+            }
+        }
+
+
+
         // method for saving Orders to the database
         private int SaveOrderToDatabase()
         {
