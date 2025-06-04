@@ -47,6 +47,25 @@ namespace PowderCoatingApp
                     lblWelcome.Text = "Welcome, " + name.ToString() + "!";
             }
         }
+        // Extract customerID from the customers table for userId
+        // For the orders table, because it expects customerID, not userID
+        private int GetCustomerIdForUser(int userId)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT customerID FROM customers WHERE userID=@uid";
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@uid", userId);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null)
+                        return Convert.ToInt32(result);
+                }
+            }
+            throw new Exception("Customer ID not found for current user!");
+        }
+
 
 
         private void AddOrderForm_Load(object sender, EventArgs e)
@@ -155,7 +174,7 @@ namespace PowderCoatingApp
                     {
                         // Get selected customer ID
                         int customerId = (userRole == "customer")
-                            ? loggedInUserId
+                            ? GetCustomerIdForUser(loggedInUserId) // For the orders table, because it expects customerID, not userID
                             : ((ComboBoxItem)cmbCustomer.SelectedItem).Value;
 
                         string productType = txtProductType.Text;
