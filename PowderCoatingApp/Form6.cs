@@ -786,6 +786,7 @@ namespace PowderCoatingApp
 
             dgvData.AllowUserToAddRows = false;
         }
+
         // Validation Logic
         private void dgvData_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
